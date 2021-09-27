@@ -1,0 +1,28 @@
+.basic_layout {
+  position: relative;
+  .nav_side {
+    position: fixed;
+    width: 200px;
+    height: 100vh;
+    background-color: #001529;
+    color: #fff;
+    overflow-y: auto;
+    transition: width 0.5s;
+  }
+  .content_right {
+    margin-left: 200px;
+    .nav_top {
+      height: 50px;
+      line-height: 50px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+    }
+    .wrapper {
+      background: #eef0f3;
+      padding: 20px;
+      height: calc(100vh - 50px);
+    }
+  }
+}

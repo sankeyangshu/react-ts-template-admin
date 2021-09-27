@@ -3,12 +3,13 @@
  * @Author: 王振
  * @Date: 2021-09-24 14:50:29
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-24 14:50:54
+ * @LastEditTime: 2021-09-27 10:31:10
  */
 
 // 导入axios
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { message } from 'antd';
+import { store } from '@/store';
 
 // 1. 创建新的axios实例
 const instance = axios.create({
@@ -27,10 +28,10 @@ instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     // 发请求前做的一些处理，数据转化，配置请求头，设置token,设置loading等
     // 每次发送请求之前判断vuex中是否存在token,如果存在，则统一在http请求的header都加上token，这样后台根据token判断你的登录情况
-    // const token = store.getters.token;
-    // if (token) {
-    //   config.headers["Authorization"] = `Bearer ${token}`;
-    // }
+    const token = store.getState().storeData.userInfo.token;
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     // 设置loading
     message.loading('加载中...', 0);
     // 数据转换,判断数据格式为formdata还是json格式
