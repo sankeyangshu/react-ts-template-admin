@@ -3,7 +3,7 @@
  * @Author: 王振
  * @Date: 2021-09-27 14:22:52
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-27 15:40:09
+ * @LastEditTime: 2021-09-28 10:31:00
  */
 import React, { useState } from 'react';
 import moduleCss from './Header.module.less';
@@ -29,11 +29,28 @@ const Header = () => {
     dispatch(setStoreData(actionTypes.SET_USERINFO.name, {}));
   };
 
+  // 切换主题色
+  const changeTheme = (themes: string) => {
+    dispatch(setStoreData(actionTypes.SET_THEME.name, themes));
+  };
+
   // 用户信息操作菜单
   const menu = (
     <Menu>
       <Menu.Item onClick={logout} key="1">
         <span>退出登录</span>
+      </Menu.Item>
+    </Menu>
+  );
+
+  // 用户修改主题色
+  const changeMenu = (
+    <Menu>
+      <Menu.Item onClick={() => changeTheme('default')}>
+        <span>暗黑主题</span>
+      </Menu.Item>
+      <Menu.Item onClick={() => changeTheme('')}>
+        <span>亮白主题</span>
       </Menu.Item>
     </Menu>
   );
@@ -51,9 +68,12 @@ const Header = () => {
         </Breadcrumb>
       </div>
       <div className={moduleCss.header_right}>
-        <Badge dot>
+        <Badge dot className={moduleCss.bellOut}>
           <BellOutlined style={{ fontSize: 20 }} />
         </Badge>
+        <Dropdown overlay={changeMenu}>
+          <div title="更换主题" className={moduleCss.theme} />
+        </Dropdown>
         <Dropdown className={moduleCss.avart} overlay={menu}>
           <span className={moduleCss.avart_user}>
             <span>三棵杨树</span>

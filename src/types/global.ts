@@ -3,7 +3,7 @@
  * @Author: 王振
  * @Date: 2021-09-24 14:45:46
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-27 10:15:07
+ * @LastEditTime: 2021-09-28 14:19:27
  */
 
 export type CommonObject<T = any> = Record<string, T>;
@@ -21,4 +21,5 @@ export interface routerConfigModel {
   name?: string;
   component?: any;
   auth?: boolean;
+  routes?: routerConfigModel[];
 }
