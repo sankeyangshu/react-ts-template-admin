@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# react-ts-template-admin
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### 介绍
 
-## Available Scripts
+这是一个用React和TypeScript开发的一个后台管理系统的模版，是一个比较精简的框架，方便自己快速开发，使用react hooks开发的后台管理系统模版，精简了很多不必要的代码，此项目一定程度上参考了[ react-antd-multi-tabs-admin](https://github.com/hsl947/react-antd-multi-tabs-admin)，大家也可以去看看该项目。
 
-In the project directory, you can run:
+**注 1：此项目属于个人学习项目，仅供学习和技术研究使用，不建议商用。**
 
-### `npm start`
+**注 2：如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### 软件架构
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+react + ts +less。。。
 
-### `npm test`
+#### 安装教程
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##### 前序准备
 
-### `npm run build`
+你需要在本地安装 [node](http://nodejs.org/) ，node 需要 12.0 以上版本
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone git@github.com:1260323835/react-ts-template-admin.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+cd react-ts-template-admin
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm install
 
-### `npm run eject`
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### 项目截图
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+##### 登录
 
-## Learn More
+![](docs/1.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##### 首页
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![](docs/2.png)
+
+##### 错误页面
+
+![](docs/3.png)
+
+#### 路由/菜单配置
+
+```bash
+# 所有路由写在 /src/router/index.ts （包括菜单栏的路由）
+  用于路由权限控制
+
+# 左侧菜单路由写在 /src/config/menu.ts
+  仅用于菜单栏展示
+
+# 分两套的原因是，方便维护，如果不嫌麻烦，可以都写在 routes 里，用一个字段标识菜单路由即可
+```
+
+#### 参与贡献
+
+1.  Fork 本仓库
+2.  新建 Feat_xxx 分支
+3.  提交代码
+4.  新建 Pull Request
+
+#### 许可证
+
+[MIT License](https://github.com/1260323835/react-ts-template-admin/blob/main/LICENSE)
