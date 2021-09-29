@@ -3,12 +3,12 @@
  * @Author: 王振
  * @Date: 2021-09-28 10:48:55
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-29 09:07:20
+ * @LastEditTime: 2021-09-29 09:41:51
  */
 
 import routes from '@/router';
 import ErrorPage from '@/pages/ErrorPage';
-import { CommonObject } from '@/types';
+import { CommonObject, routerConfigModel } from '@/types';
 
 /**
  * @description: 隐藏手机号
@@ -35,10 +35,10 @@ export const deepClone = (obj: CommonObject) => {
 
 /**
  * @description: 以递归的方式展平react router数组
- * @param {CommonObject} arr 路由数组
+ * @param {routerConfigModel[]} arr 路由数组
  */
-export const flattenRoutes = (arr: CommonObject<unknown>[]) =>
-  arr.reduce((prev: CommonObject<unknown>[], item: CommonObject<unknown>) => {
+export const flattenRoutes = (arr: routerConfigModel[]) =>
+  arr.reduce((prev: routerConfigModel[], item: routerConfigModel) => {
     if (Array.isArray(item.routes)) {
       prev.push(item);
     }

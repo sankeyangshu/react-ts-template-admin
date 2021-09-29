@@ -3,7 +3,7 @@
  * @Author: 王振
  * @Date: 2021-09-27 16:04:04
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-28 15:56:16
+ * @LastEditTime: 2021-09-29 09:43:39
  */
 import React, { useState, useEffect, useCallback } from 'react';
 import moduleCss from './MenuView.module.less';
@@ -74,7 +74,7 @@ const MenuView = () => {
   // 递归渲染多级菜单
   const renderMenu = (data) =>
     data.map((item) => {
-      if (item.routes) {
+      if (item.routes && item.routes.length > 0) {
         return (
           <SubMenu key={item.path} title={subMenuTitle(item)}>
             {renderMenu(item.routes)}
