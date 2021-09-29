@@ -3,12 +3,13 @@
  * @Author: 王振
  * @Date: 2021-09-27 14:22:52
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-28 10:31:00
+ * @LastEditTime: 2021-09-29 10:04:17
  */
 import React, { useState } from 'react';
 import moduleCss from './Header.module.less';
 import actionTypes from '@/store/actionTypes';
-import { Layout, Breadcrumb, Badge, Dropdown, Menu } from 'antd';
+import BreadCrumbs from '@/layout/BreadCrumbs';
+import { Layout, Badge, Dropdown, Menu } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined, BellOutlined } from '@ant-design/icons';
 import { setStoreData } from '@/store/actions';
 import { useDispatch } from 'react-redux';
@@ -62,10 +63,7 @@ const Header = () => {
           className: moduleCss.trigger,
           onClick: toggle,
         })}
-        <Breadcrumb className={moduleCss.bread}>
-          <Breadcrumb.Item>User</Breadcrumb.Item>
-          <Breadcrumb.Item>Bill</Breadcrumb.Item>
-        </Breadcrumb>
+        <BreadCrumbs></BreadCrumbs>
       </div>
       <div className={moduleCss.header_right}>
         <Badge dot className={moduleCss.bellOut}>
