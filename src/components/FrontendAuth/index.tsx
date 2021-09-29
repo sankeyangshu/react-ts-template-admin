@@ -3,7 +3,7 @@
  * @Author: 王振
  * @Date: 2021-09-27 09:10:11
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-29 09:27:30
+ * @LastEditTime: 2021-09-29 10:20:51
  */
 
 import React from 'react';
@@ -43,11 +43,7 @@ const FrontendAuth: React.FC<propsModel> = ({ config }) => {
   const targetRouterConfig = findRouterConfig(config) as routerConfigModel; // 新版检测路由是否合法，并强制赋予类型
   if (targetRouterConfig && !targetRouterConfig.auth && !isLogin) {
     const { component } = targetRouterConfig;
-    return (
-      <Admin>
-        <Route exact path={pathname} key={pathname} component={component} />
-      </Admin>
-    );
+    return <Route exact path={pathname} key={pathname} component={component} />;
   }
 
   if (isLogin) {

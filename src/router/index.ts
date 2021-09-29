@@ -3,7 +3,7 @@
  * @Author: 王振
  * @Date: 2021-09-27 08:52:11
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-29 09:39:42
+ * @LastEditTime: 2021-09-29 10:21:25
  */
 
 import Home from '@/pages/Home';
@@ -22,6 +22,7 @@ const routes: routerConfigModel[] = [
     path: '/',
     name: '首页',
     component: Home,
+    auth: true,
   },
   {
     path: '/login',
@@ -31,16 +32,19 @@ const routes: routerConfigModel[] = [
   {
     path: '/user',
     name: '用户管理',
+    auth: true,
     routes: [
       {
         path: '/user/list',
         name: '用户列表',
         component: UserList,
+        auth: true,
       },
       {
         path: '/user/list/add',
         name: '新增用户',
         component: UserEdit,
+        auth: true,
       },
     ],
   },
@@ -48,6 +52,7 @@ const routes: routerConfigModel[] = [
     path: '/403',
     name: '403',
     component: ErrorPage,
+    auth: true,
   },
 ];
 
