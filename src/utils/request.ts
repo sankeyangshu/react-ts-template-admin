@@ -3,7 +3,7 @@
  * @Author: 王振
  * @Date: 2021-09-24 14:50:29
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-27 10:31:10
+ * @LastEditTime: 2022-03-23 19:50:40
  */
 
 // 导入axios
@@ -14,7 +14,7 @@ import { store } from '@/store';
 // 1. 创建新的axios实例
 const instance = axios.create({
   // 公共接口
-  baseURL: 'http://localhost:3000',
+  baseURL: process.env.REACT_APP_BASE_URL,
   // 超时时间 单位是ms，这里设置了10s的超时时间
   timeout: 10000,
 });
