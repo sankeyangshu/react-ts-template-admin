@@ -3,13 +3,15 @@
  * @Author: 王振
  * @Date: 2021-09-24 14:50:29
  * @LastEditors: 王振
- * @LastEditTime: 2022-03-24 16:16:32
+ * @LastEditTime: 2022-03-24 17:44:07
  */
 
 // 导入axios
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { message } from 'antd';
 import { store } from '@/store';
+import { isCheckTimeout } from './app';
+import { logout } from '@/store/actions/user';
 
 // 1. 创建新的axios实例
 const instance = axios.create({
@@ -30,6 +32,12 @@ instance.interceptors.request.use(
     // 每次发送请求之前判断vuex中是否存在token,如果存在，则统一在http请求的header都加上token，这样后台根据token判断你的登录情况
     const token = store.getState().userReducer.token;
     if (token) {
+      // 判断用户token是否超时
+      if (isCheckTimeout()) {
+        // token超时，退出登录
+        store.dispatch(logout());
+        return Promise.reject(new Error('token 失效'));
+      }
       config.headers.Authorization = `Bearer ${token}`;
     }
     // 设置loading
@@ -67,11 +75,16 @@ instance.interceptors.response.use(
   (error: AxiosError) => {
     // 响应失败，关闭等待提示
     message.destroy();
-    // // 超时处理
+    // token超时处理
+    if (error.response && error.response.data && error.response.data.code === 401) {
+      // token超时
+      store.dispatch(logout());
+    }
+    // 响应失败处理
     if (JSON.stringify(error).includes('Network Error')) {
       message.error('网络超时');
     } else {
-      message.error('服务器连接失败');
+      message.error(error.message);
     }
     console.info(error);
     return Promise.reject(error);

@@ -3,11 +3,11 @@
  * @Author: 王振
  * @Date: 2022-03-24 14:13:59
  * @LastEditors: 王振
- * @LastEditTime: 2022-03-24 16:07:13
+ * @LastEditTime: 2022-03-24 17:21:29
  */
 
 import { StoreActionType } from '@/types';
-import { SET_TOKEN, SET_USERINFO } from '../actionTypes/user';
+import { SET_TOKEN, SET_USERINFO, TIME_STAMP } from '../actionTypes/user';
 
 /**
  * 用户state初始数据类型
@@ -16,6 +16,7 @@ export interface userStateType {
   token: string;
   userInfo: object;
   roles: any[];
+  timeStamp: number;
 }
 
 /**
@@ -25,6 +26,7 @@ const userInitState: userStateType = {
   token: '', // 用户认证token
   userInfo: {}, // 用户基本信息
   roles: [], // 权限角色
+  timeStamp: 0, // 时间戳
 };
 
 /**
@@ -44,6 +46,11 @@ const storeData = (state = userInitState, { type, payload }: StoreActionType): u
       return {
         ...state,
         userInfo: payload,
+      };
+    case TIME_STAMP:
+      return {
+        ...state,
+        timeStamp: payload,
       };
     default:
       return state;
