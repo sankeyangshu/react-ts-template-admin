@@ -3,31 +3,15 @@
  * @Author: 王振
  * @Date: 2021-09-24 14:42:11
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-24 14:42:42
+ * @LastEditTime: 2022-03-24 16:39:24
  */
 
-import { initState } from '../state';
-import actionTypes from '../actionTypes';
+import { combineReducers } from 'redux';
+import userReducer from './user';
+import appReducer from './app';
 
-interface StoreAction {
-  type: string;
-  payload: any;
-}
-
-const storeData = (state = initState, { type, payload }: StoreAction): object => {
-  // 判断是否修改了reducer
-  if (!actionTypes[type]) {
-    return state;
-  }
-
-  // 获取action方法
-  const { field } = actionTypes[type];
-
-  // 返回修改后的新的值
-  return {
-    ...state,
-    [field]: payload,
-  };
-};
-
-export default storeData;
+// 把一个由多个不同 reducer 函数作为 value 的 object，合并成一个最终的 reducers 函数
+export default combineReducers({
+  userReducer,
+  appReducer,
+});

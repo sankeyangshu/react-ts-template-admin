@@ -3,7 +3,7 @@
  * @Author: 王振
  * @Date: 2021-09-27 09:10:11
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-29 10:20:51
+ * @LastEditTime: 2022-03-24 16:22:00
  */
 
 import React from 'react';
@@ -20,7 +20,7 @@ interface propsModel {
 const FrontendAuth: React.FC<propsModel> = ({ config }) => {
   const location = useLocation(); // 获取location实例
   const { pathname } = location; // 获取当前路径
-  const isLogin = useSelector((state) => state.storeData.userInfo.token); // 获取token，判断用户是否登录
+  const isLogin = useSelector((state) => state.userReducer.token); // 获取token，判断用户是否登录
 
   // 递归返回路由合法的组件
   const findRouterConfig = (config: routerConfigModel[]) => {

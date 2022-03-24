@@ -3,12 +3,9 @@
  * @Author: 王振
  * @Date: 2021-09-27 14:22:52
  * @LastEditors: 王振
- * @LastEditTime: 2022-03-24 12:52:23
+ * @LastEditTime: 2022-03-24 16:55:49
  */
 import React, { useState } from 'react';
-import moduleCss from './Header.module.less';
-import actionTypes from '@/store/actionTypes';
-import BreadCrumbs from '@/layout/BreadCrumbs';
 import { Layout, Badge, Dropdown, Menu, Avatar } from 'antd';
 import {
   MenuUnfoldOutlined,
@@ -16,8 +13,11 @@ import {
   BellOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { setStoreData } from '@/store/actions';
 import { useDispatch } from 'react-redux';
+import { setToken } from '@/store/actions/user';
+import { setCollapsed as setCollapse, setTheme } from '@/store/actions/app';
+import moduleCss from './Header.module.less';
+import BreadCrumbs from '@/layout/BreadCrumbs';
 
 const Header = () => {
   const { Header } = Layout;
@@ -27,17 +27,17 @@ const Header = () => {
   // 展开-收起时的回调函数
   const toggle = () => {
     setCollapsed(!collapsed);
-    dispatch(setStoreData(actionTypes.SET_COLLAPSED.name, !collapsed));
+    dispatch(setCollapse(!collapsed));
   };
 
   // 退出登录
   const logout = () => {
-    dispatch(setStoreData(actionTypes.SET_USERINFO.name, {}));
+    dispatch(setToken(''));
   };
 
   // 切换主题色
   const changeTheme = (themes: string) => {
-    dispatch(setStoreData(actionTypes.SET_THEME.name, themes));
+    dispatch(setTheme(themes));
   };
 
   // 用户信息操作菜单

@@ -3,19 +3,17 @@
  * @Author: 王振
  * @Date: 2021-09-27 09:00:55
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-27 10:45:46
+ * @LastEditTime: 2022-03-24 16:20:57
  */
 import React from 'react';
 import ReactCanvasNest from 'react-canvas-nest';
 import moduleCss from './Login.module.less';
 import Logo from '@/assets/img/logo.png';
-import actionTypes from '@/store/actionTypes';
-import { setStoreData } from '@/store/actions';
+import { login } from '@/store/actions/user';
 import { useHistory } from 'react-router-dom';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Form, Input, Button, message } from 'antd';
 import { CommonObject } from '@/types';
-import { postLoginAPI } from '@/api/login';
 import { useDispatch } from 'react-redux';
 
 const Login: React.FC = () => {
@@ -25,13 +23,10 @@ const Login: React.FC = () => {
   // 点击登录
   const onFinish = async (values: CommonObject<string>) => {
     const { userName, password } = values;
-    const res = await postLoginAPI({ userName, password });
-    if (res.code === 0) {
-      // localStorage.setItem('token', res.data.token);
-      dispatch(setStoreData(actionTypes.SET_USERINFO.name, res.data));
-      message.success('登录成功');
-      history.push('/');
-    }
+    dispatch(login({ userName, password }));
+    // localStorage.setItem('token', res.data.token);
+    message.success('登录成功');
+    history.push('/');
   };
 
   return (

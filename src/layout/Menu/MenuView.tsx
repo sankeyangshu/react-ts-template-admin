@@ -3,19 +3,19 @@
  * @Author: 王振
  * @Date: 2021-09-27 16:04:04
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-29 09:43:39
+ * @LastEditTime: 2022-03-24 16:57:05
  */
 import React, { useState, useEffect, useCallback } from 'react';
-import moduleCss from './MenuView.module.less';
-import logo from '@/assets/img/logo.png';
-import menus from '@/config/menu';
-import MyIconFont from '@/components/MyIconFont';
-// import Icon from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { useSelector } from '@/store/hooks';
 import { Link, useLocation } from 'react-router-dom';
 import { CommonObject } from '@/types';
 import { getKeyName, flattenRoutes } from '@/utils/toolFunc';
+import moduleCss from './MenuView.module.less';
+import logo from '@/assets/img/logo.png';
+import menus from '@/config/menu';
+import MyIconFont from '@/components/MyIconFont';
+// import Icon from '@ant-design/icons';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -24,8 +24,8 @@ const flatMenu = flattenRoutes(menus);
 type MenuType = CommonObject<string>;
 
 const MenuView = () => {
-  const collapsed = useSelector((state) => state.storeData.collapsed); // 从redux中获取菜单收纳状态
-  const theme = useSelector((state) => state.storeData.theme); // 从redux中获取主题色
+  const collapsed = useSelector((state) => state.appReducer.collapsed); // 从redux中获取菜单收纳状态
+  const theme = useSelector((state) => state.appReducer.theme); // 从redux中获取主题色
   // const { permission = [] } = useSelector((state) => state.storeData.userInfo);
   const { pathname } = useLocation(); // 获取路径
   const { tabKey: curKey = 'home' } = getKeyName(pathname); // 根据路径获取路由的name和key

@@ -3,15 +3,10 @@
  * @Author: 王振
  * @Date: 2021-09-24 14:45:46
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-28 14:19:27
+ * @LastEditTime: 2022-03-24 16:17:58
  */
 
 export type CommonObject<T = any> = Record<string, T>;
-
-export interface ReduxProps<T> {
-  storeData: T;
-  setStoreData?: (type: string, payload: any) => object;
-}
 
 /**
  * 路由类型
@@ -22,4 +17,12 @@ export interface routerConfigModel {
   component?: any;
   auth?: boolean;
   routes?: routerConfigModel[];
+}
+
+/**
+ * action 类型
+ */
+export interface StoreActionType {
+  type: string;
+  payload: any;
 }
