@@ -3,7 +3,7 @@
  * @Author: 王振
  * @Date: 2021-09-27 14:22:52
  * @LastEditors: 王振
- * @LastEditTime: 2022-03-24 16:55:49
+ * @LastEditTime: 2022-03-24 17:47:26
  */
 import React, { useState } from 'react';
 import { Layout, Badge, Dropdown, Menu, Avatar } from 'antd';
@@ -14,7 +14,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { setToken } from '@/store/actions/user';
+import { logout as userLogout } from '@/store/actions/user';
 import { setCollapsed as setCollapse, setTheme } from '@/store/actions/app';
 import moduleCss from './Header.module.less';
 import BreadCrumbs from '@/layout/BreadCrumbs';
@@ -32,7 +32,7 @@ const Header = () => {
 
   // 退出登录
   const logout = () => {
-    dispatch(setToken(''));
+    dispatch(userLogout());
   };
 
   // 切换主题色
