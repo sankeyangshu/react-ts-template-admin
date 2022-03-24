@@ -3,14 +3,19 @@
  * @Author: 王振
  * @Date: 2021-09-27 14:22:52
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-29 10:04:17
+ * @LastEditTime: 2022-03-24 12:52:23
  */
 import React, { useState } from 'react';
 import moduleCss from './Header.module.less';
 import actionTypes from '@/store/actionTypes';
 import BreadCrumbs from '@/layout/BreadCrumbs';
-import { Layout, Badge, Dropdown, Menu } from 'antd';
-import { MenuUnfoldOutlined, MenuFoldOutlined, BellOutlined } from '@ant-design/icons';
+import { Layout, Badge, Dropdown, Menu, Avatar } from 'antd';
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  BellOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import { setStoreData } from '@/store/actions';
 import { useDispatch } from 'react-redux';
 
@@ -74,7 +79,12 @@ const Header = () => {
         </Dropdown>
         <Dropdown className={moduleCss.avart} overlay={menu}>
           <span className={moduleCss.avart_user}>
-            <span>三棵杨树</span>
+            <Avatar
+              shape="square"
+              size={40}
+              src="https://joeschmoe.io/api/v1/random"
+              icon={<UserOutlined />}
+            />
           </span>
         </Dropdown>
       </div>
