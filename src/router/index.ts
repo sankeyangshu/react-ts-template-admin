@@ -3,15 +3,17 @@
  * @Author: 王振
  * @Date: 2021-09-27 08:52:11
  * @LastEditors: 王振
- * @LastEditTime: 2021-09-29 10:21:25
+ * @LastEditTime: 2022-03-25 15:41:41
  */
 
-import Home from '@/pages/Home';
-import Login from '@/pages/Login';
-import ErrorPage from '@/pages/ErrorPage';
-import UserList from '@/pages/User/UserList';
-import UserEdit from '@/pages/User/UserEdit';
 import { routerConfigModel } from '@/types';
+import loadable from '@/components/Loadable';
+
+const Home = loadable(() => import(/* webpackChunkName: 'home' */ '@/pages/Home'));
+const Login = loadable(() => import(/* webpackChunkName: 'login' */ '@/pages/Login'));
+const ErrorPage = loadable(() => import(/* webpackChunkName: 'errorpage' */ '@/pages/ErrorPage'));
+const UserList = loadable(() => import(/* webpackChunkName: 'userlist' */ '@/pages/User/UserList'));
+const UserEdit = loadable(() => import(/* webpackChunkName: 'useredit' */ '@/pages/User/UserEdit'));
 
 /**
  * path 跳转的路径
