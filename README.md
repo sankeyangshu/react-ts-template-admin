@@ -6,7 +6,7 @@
 
 [react-ts-template-admin] 现已升级为 [ **react-template-admin** ]，最新版使用 Vite + TS 构建，更轻量级、高性能！
 
-请移步至新仓库：[react-template-admin](https://github.com/sankeyangshu/react-template-admin)
+请移步至新仓库：[react-template-admin](https://github.com/sankeyangshu-labs/react-template-admin)
 
 ### ---------------------------------------------
 
@@ -31,7 +31,7 @@ react + ts +less。。。
 你需要在本地安装 [node](http://nodejs.org/) ，node 需要 12.0 以上版本
 
 ```bash
-git clone git@github.com:1260323835/react-ts-template-admin.git
+git clone https://github.com/sankeyangshu/react-ts-template-admin.git
 
 cd react-ts-template-admin
 
@@ -75,4 +75,4 @@ npm start
 
 #### 许可证
 
-[MIT License](https://github.com/1260323835/react-ts-template-admin/blob/main/LICENSE)
+[MIT License](https://github.com/sankeyangshu/react-ts-template-admin/blob/main/LICENSE)
