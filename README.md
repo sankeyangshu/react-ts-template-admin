@@ -6,7 +6,7 @@
 
 [react-ts-template-admin] 现已升级为 [ **react-template-admin** ]，最新版使用 Vite + TS 构建，更轻量级、高性能！
 
-请移步至新仓库：[react-template-admin](https://github.com/sankeyangshu-labs/react-template-admin)
+请移步至新仓库：[react-template-admin](https://github.com/sankeyangshu/react-template-admin)
 
 ### ---------------------------------------------
 
